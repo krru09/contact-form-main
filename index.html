@@ -27,17 +27,19 @@
         <fieldset class="contact-information">
           <legend>Contact Information</legend>
           <label for="fname" class="input-grid">
-            First Name:
-            <input type="text" id="fname" name="fname" required class="error-border">
+            <h2>First Name <span class="asterisk">*</span></h2>
+            <input type="text" id="fname" name="fname" required  class="error-border">
             <p>This field is required</p>
           </label>
           
-          <label for="lname" class="input-grid">Last Name:
+          <label for="lname" class="input-grid">
+            <h2>Last Name <span class="asterisk">*</span></h2>
             <input type="text" id="lname" name="lname" required class="error-border">
             <p>This field is required</p>
           </label>
   
-          <label for="email" class="input-grid">Email Address:
+          <label for="email" class="input-grid">
+            <h2>Email Address <span class="asterisk">*</span></h2>
             <input type="text" id="email" name="email" required class="error-border">
             <p>Please enter a valid email address</p>
           </label>
@@ -46,7 +48,9 @@
         <!-- radio buttons -->
          <!-- TODO: wrap label inside label -->
         <fieldset class="radio-grid">
-          <legend id="query-legend">Query Type:</legend>
+          <legend id="query-legend">
+            <h2>Query Type <span class="asterisk">*</span></h2>
+          </legend>
           <label for="general-enquiry" id="radio-label" class="radio-container">
             <div class="radio-format">
               <input type="radio" id="general-enquiry" value="General Enquiry" name="inqury-type">
@@ -65,7 +69,7 @@
         <!-- textarea -->
         <fieldset>
           <legend>Service Message</legend>
-          <label for="message" class="textarea-grid">Message
+          <label for="message" class="textarea-grid"> <h2>Message <span class="asterisk">*</span></h2>
             <textarea name="message" class="error-border" required></textarea>
             <p>This field is required</p>
           </label>
@@ -77,13 +81,13 @@
         <div class="agreement-terms">
           <input type="checkbox" id="consent" name="consent" value="consent" required>
           <label for="consent" id="agreement">
-            I consent to being contacted by the team
+            <h2>I consent to being contacted by the team *</h2>
           </label>
         </div>
         <p>To submit this form, plese consent to being contacted</p>
       </fieldset>
 
-      <button type="submit"><span>Submit</span></button>
+      <button type="submit">Submit</button>
     </form>
   </main>
 </body>
