@@ -26,47 +26,64 @@
         <legend>Form Data</legend>
         <fieldset class="contact-information">
           <legend>Contact Information</legend>
-          <label for="fname">First Name:
-            <input type="text" id="fname" name="fname" required>
+          <label for="fname" class="input-grid">
+            First Name:
+            <input type="text" id="fname" name="fname" required class="error-border">
+            <p>This field is required</p>
           </label>
           
-          <label for="lname">Last Name:
-            <input type="text" id="lname" name="lname" required>
+          <label for="lname" class="input-grid">Last Name:
+            <input type="text" id="lname" name="lname" required class="error-border">
+            <p>This field is required</p>
           </label>
   
-          <label for="email">Email Address:
-            <input type="text" id="email" name="email" required>
+          <label for="email" class="input-grid">Email Address:
+            <input type="text" id="email" name="email" required class="error-border">
+            <p>Please enter a valid email address</p>
           </label>
         </fieldset>
   
         <!-- radio buttons -->
-        <fieldset class="radio-options">
+         <!-- TODO: wrap label inside label -->
+        <fieldset class="radio-grid">
           <legend id="query-legend">Query Type:</legend>
-          <div class="radio-container">
-            <input type="radio" id="general-enquiry" value="General Enquiry" name="inqury-type" required>
-            <label for="general-enquiry" id="radio-label">General Enquiry</label>
-          </div>
-          <div class="radio-container">
-            <input type="radio" id="support-request" value="Support Request" name="inqury-type">
-            <label for="support-request" id="radio-label">Support Request</label>
-          </div>
+          <label for="general-enquiry" id="radio-label" class="radio-container">
+            <div class="radio-format">
+              <input type="radio" id="general-enquiry" value="General Enquiry" name="inqury-type">
+              General Enquiry
+            </div>
+          </label>
+            <label for="support-request" id="radio-label" class="radio-container selected-button">
+              <div class="radio-format">
+                <input type="radio" id="support-request" value="Support Request" name="inqury-type">
+                Support Request
+              </div>
+            </label>
+            <p>Please select a query type</p>
         </fieldset>
   
         <!-- textarea -->
         <fieldset>
           <legend>Service Message</legend>
-          <label for="message">Message</label>
-          <textarea name="message" required></textarea>
+          <label for="message" class="textarea-grid">Message
+            <textarea name="message" class="error-border" required></textarea>
+            <p>This field is required</p>
+          </label>
         </fieldset>
       </fieldset>
 
       <fieldset class="consent-agreement">
         <legend>Consent for Service Contact</legend>
-        <input type="checkbox" id="consent" name="consent" value="consent" required>
-        <label for="consent" id="consent-agreement">I consent to being contacted by the team</label>
+        <div class="agreement-terms">
+          <input type="checkbox" id="consent" name="consent" value="consent" required>
+          <label for="consent" id="agreement">
+            I consent to being contacted by the team
+          </label>
+        </div>
+        <p>To submit this form, plese consent to being contacted</p>
       </fieldset>
 
-      <button type="submit">Submit</button>
+      <button type="submit"><span>Submit</span></button>
     </form>
   </main>
 </body>
