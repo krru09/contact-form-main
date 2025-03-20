@@ -1,0 +1,43 @@
+// define colors
+$grey-900: #2A4144;
+$grey-500: #86A2A5;
+
+$white: #FFFFFF;
+
+$green-600: #0C7D69;
+$green-200: #E0F1E8;
+$red-errors: #D73C3C;
+
+// fonts
+@font-face {
+  font-family: "Karla";
+  src: url(../../assets/fonts/Karla-VariableFont_wght.ttf) format("truetype");
+}
+
+// css reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-size: 1rem;
+  font-family: "Karla", sans-serif;
+  width: 100%;
+  min-height: 100%;
+  color: $grey-900;
+}
+
+body {
+  background-color: $green-200;
+  padding: 2rem 1rem;
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+form {
+  background-color: $white;
+}

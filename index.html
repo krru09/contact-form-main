@@ -13,6 +13,8 @@
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
+
+  <link rel="stylesheet" type="text/css" href="dist/css/styles.min.css">
 </head>
 <body>
 
@@ -50,9 +52,8 @@
 
       <fieldset>
         <legend>Consent for Service Contact</legend>
-        <select name="consent" id="consent" required>
-          <option value="yes">I consent to being contacted by the team.</option>
-        </select>
+        <input type="checkbox" id="consent" name="consent" value="consent" required>
+        <label for="consent">I consent to being contacted by the team</label>
       </fieldset>
 
       <button type="submit">Submit</button>
