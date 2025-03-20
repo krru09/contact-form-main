@@ -18,6 +18,8 @@ $red-errors: #D73C3C;
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -32,12 +34,10 @@ html, body {
 body {
   background-color: $green-200;
   padding: 2rem 1rem;
+  display: grid;
+  place-items: center;
 }
 
 button, input, textarea {
   font: inherit;
-}
-
-form {
-  background-color: $white;
 }

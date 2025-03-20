@@ -20,49 +20,54 @@
 
   <main>
     <form>
-      <h1>Contact Us</h1>
       <!-- text boxes -->
-      <fieldset>
-        <legend>Contact Information</legend>
-        <label for="fname">First Name:</label>
-        <input type="text" id="fname" name="fname" required>
-        
-        <label for="lname">Last Name:</label>
-        <input type="text" id="lname" name="lname" required>
-
-        <label for="email">Email Address:</label>
-        <input type="text" id="email" name="email" required>
+      <fieldset id="form-data">
+        <h1>Contact Us</h1>
+        <legend>Form Data</legend>
+        <fieldset class="contact-information">
+          <legend>Contact Information</legend>
+          <label for="fname">First Name:
+            <input type="text" id="fname" name="fname" required>
+          </label>
+          
+          <label for="lname">Last Name:
+            <input type="text" id="lname" name="lname" required>
+          </label>
+  
+          <label for="email">Email Address:
+            <input type="text" id="email" name="email" required>
+          </label>
+        </fieldset>
+  
+        <!-- radio buttons -->
+        <fieldset class="radio-options">
+          <legend id="query-legend">Query Type:</legend>
+          <div class="radio-container">
+            <input type="radio" id="general-enquiry" value="General Enquiry" name="inqury-type" required>
+            <label for="general-enquiry" id="radio-label">General Enquiry</label>
+          </div>
+          <div class="radio-container">
+            <input type="radio" id="support-request" value="Support Request" name="inqury-type">
+            <label for="support-request" id="radio-label">Support Request</label>
+          </div>
+        </fieldset>
+  
+        <!-- textarea -->
+        <fieldset>
+          <legend>Service Message</legend>
+          <label for="message">Message</label>
+          <textarea name="message" required></textarea>
+        </fieldset>
       </fieldset>
 
-      <!-- radio buttons -->
-      <fieldset>
-        <legend>Query Type:</legend>
-        <input type="radio" id="general-enquiry" value="General Enquiry" required>
-        <label for="general-enquiry">General Enquiry</label>
-        <input type="radio" id="support-request" value="Support Request">
-        <label for="support-request">Support Request</label>
-      </fieldset>
-
-      <!-- textarea -->
-      <fieldset>
-        <legend>Service Message</legend>
-        <label for="message">Message</label>
-        <textarea name="message" rows="8" required></textarea>
-      </fieldset>
-
-      <fieldset>
+      <fieldset class="consent-agreement">
         <legend>Consent for Service Contact</legend>
         <input type="checkbox" id="consent" name="consent" value="consent" required>
-        <label for="consent">I consent to being contacted by the team</label>
+        <label for="consent" id="consent-agreement">I consent to being contacted by the team</label>
       </fieldset>
 
       <button type="submit">Submit</button>
     </form>
   </main>
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
 </body>
 </html>

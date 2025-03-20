@@ -1,0 +1,88 @@
+button {
+  background-color: $green-600;
+  border: none;
+  border-radius: .5rem;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 2.5rem;
+  color: white;
+}
+
+form {
+  background-color: $white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  display: grid;
+  gap: 2.5rem; 
+}
+
+#form-data {
+  display: grid;
+  gap: 1.5rem; 
+}
+
+legend {
+  // this is so that screen readers can still read legends but not display on the page
+  position: absolute;
+  left: -100000px;
+}
+
+#query-legend {
+  position: initial;
+  visibility: visible;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+fieldset {
+  border: none;
+}
+
+label {
+  display: block; 
+}
+
+#radio-label, #consent-agreement {
+  display: inline-block;
+}
+
+#radio-label {
+  margin-left: 0.75rem;
+  margin-bottom: 0; 
+}
+
+input[type="text"], textarea, .radio-container {
+  width: 100%;
+  border: 1px solid $grey-500;
+  border-radius: .5rem; 
+  padding: .75rem 1.5rem;
+}
+
+textarea {
+  height: 15rem;
+  margin-top: .5rem; 
+}
+
+h1 {
+  margin-bottom: .5rem;
+}
+
+.contact-information {
+  display: grid;
+  gap: 1.5rem; 
+}
+
+.contact-information input[type="text"] {
+  margin-top: .5rem; 
+}
+
+.consent-agreement {
+  display: flex;
+  gap: 1rem;
+  text-align: justify;
+}
+
+.radio-options {
+  display: grid;
+  gap: 1rem;
+}
