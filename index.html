@@ -28,20 +28,20 @@
           <legend>Contact Information</legend>
           <label for="fname" class="input-grid">
             <h2>First Name <span class="asterisk">*</span></h2>
-            <input type="text" id="fname" name="fname" required  class="error-border" title="Input field for your first name">
-            <p>This field is required</p>
+            <input type="text" id="fname" name="fname" required title="Input field for your first name">
+            <p class="hidden">This field is required</p>
           </label>
           
           <label for="lname" class="input-grid">
             <h2>Last Name <span class="asterisk">*</span></h2>
-            <input type="text" id="lname" name="lname" required class="error-border" title="Input field for your last name">
-            <p>This field is required</p>
+            <input type="text" id="lname" name="lname" required title="Input field for your last name">
+            <p class="hidden">This field is required</p>
           </label>
   
           <label for="email" class="input-grid">
             <h2>Email Address <span class="asterisk">*</span></h2>
-            <input type="text" id="email" name="email" required class="error-border" title="Input field for your email">
-            <p>Please enter a valid email address</p>
+            <input type="text" id="email" name="email" required title="Input field for your email">
+            <p class="hidden">Please enter a valid email address</p>
           </label>
         </fieldset>
   
@@ -51,27 +51,27 @@
           <legend id="query-legend">
             <h2>Query Type <span class="asterisk">*</span></h2>
           </legend>
-          <label for="general-enquiry" id="radio-label" class="radio-container">
+          <label for="general-enquiry" class="radio-container" title="Radio button for General Inquiry">
             <div class="radio-format">
               <input type="radio" id="general-enquiry" value="General Enquiry" name="inqury-type" title="Radio button for General Inquiry">
               General Enquiry
             </div>
           </label>
-            <label for="support-request" id="radio-label" class="radio-container selected-button" title="Radio button for Support Request">
+            <label for="support-request" class="radio-container" title="Radio button for Support Request">
               <div class="radio-format">
                 <input type="radio" id="support-request" value="Support Request" name="inqury-type">
                 Support Request
               </div>
             </label>
-            <p>Please select a query type</p>
+            <p class="hidden">Please select a query type</p>
         </fieldset>
   
         <!-- textarea -->
         <fieldset>
           <legend>Service Message</legend>
           <label for="message" class="textarea-grid"> <h2>Message <span class="asterisk">*</span></h2>
-            <textarea name="message" class="error-border" required title="Text area for your message to the support team"></textarea>
-            <p>This field is required</p>
+            <textarea name="message" required title="Text area for your message to the support team"></textarea>
+            <p class="hidden">This field is required</p>
           </label>
         </fieldset>
       </fieldset>
@@ -84,11 +84,12 @@
             <h2>I consent to being contacted by the team *</h2>
           </label>
         </div>
-        <p>To submit this form, plese consent to being contacted</p>
+        <p class="hidden">To submit this form, plese consent to being contacted</p>
       </fieldset>
 
       <button type="submit" title="Form submission button">Submit</button>
     </form>
   </main>
+  <script src="js/main.js" type="module"></script>
 </body>
 </html>
