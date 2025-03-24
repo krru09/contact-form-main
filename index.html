@@ -19,7 +19,7 @@
 <body>
 
   <main>
-    <form>
+    <form id="contact-form" novalidate>
       <!-- text boxes -->
       <fieldset id="form-data">
         <h1>Contact Us</h1>
@@ -47,23 +47,23 @@
   
         <!-- radio buttons -->
          <!-- TODO: wrap label inside label -->
-        <fieldset class="radio-grid">
+        <fieldset id="query-type" class="radio-grid">
           <legend id="query-legend">
             <h2>Query Type <span class="asterisk">*</span></h2>
           </legend>
           <label for="general-enquiry" class="radio-container" title="Radio button for General Inquiry">
             <div class="radio-format">
-              <input type="radio" id="general-enquiry" value="General Enquiry" name="inqury-type" title="Radio button for General Inquiry">
+              <input type="radio" id="general-enquiry" value="General Enquiry" name="inqury-type" title="Radio button for General Inquiry" required>
               General Enquiry
             </div>
           </label>
-            <label for="support-request" class="radio-container" title="Radio button for Support Request">
-              <div class="radio-format">
-                <input type="radio" id="support-request" value="Support Request" name="inqury-type">
-                Support Request
-              </div>
-            </label>
-            <p class="hidden">Please select a query type</p>
+          <label for="support-request" class="radio-container" title="Radio button for Support Request">
+            <div class="radio-format">
+              <input type="radio" id="support-request" value="Support Request" name="inqury-type">
+              Support Request
+            </div>
+          </label>
+          <p class="hidden">Please select a query type</p>
         </fieldset>
   
         <!-- textarea -->
