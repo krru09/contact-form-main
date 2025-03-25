@@ -24,6 +24,8 @@ const consentCheckbox = document.querySelector('input[type="checkbox"]');
 const consentFieldset = document.querySelector(".consent-agreement");
 
 // form functions
+
+// show input errors
 function textErrors(textElement) {
     textElement.nextElementSibling.classList.remove("hidden");
     textElement.classList.add("error-border");
@@ -33,6 +35,17 @@ function selectErrors(selectElement) {
   selectElement.lastElementChild.classList.remove("hidden");
 }
 
+// remove input errors
+function removeTextErrors(textElement) {
+  textElement.nextElementSibling.classList.add("hidden");
+  textElement.classList.remove("error-border");
+}
+
+function removeSelectErrors(selectElement) {
+  selectElement.lastElementChild.classList.add("hidden");
+}
+
+// gather data and place into objects after form validation
 function gatherData() {
   const formData = {
     firstName: document.getElementById("fname").value,
@@ -58,9 +71,10 @@ function gatherData() {
     ^^
     Edge DevTools shows private fields under "Private fields" when expanded but they are still inaccessible in code. Trying to access #submissions directly throws an error.
 
-    To safely get the data, use getSubmissions() instead.
+    To safely get the data, use getSubmissions() instead. vv
+
+    console.log("getSubmissions() result from main: ", formSubmissions.getSubmissions());
   */
-  console.log("getSubmissions() result from main: ", formSubmissions.getSubmissions());
 }
 
 // DOMContentLoaded
@@ -94,8 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   textInputElements.forEach(textElement => {
     textElement.addEventListener("input", () => {
       if (textElement.checkValidity()) {
-        textElement.nextElementSibling.classList.add("hidden");
-        textElement.classList.remove("error-border");
+        removeTextErrors(textElement);
       }
     });
   })
@@ -103,21 +116,20 @@ document.addEventListener("DOMContentLoaded", () => {
   radioButtonElements.forEach(radioButton => {
     radioButton.addEventListener("change", (event) => {
       if (radioButton.checkValidity()) {
-        radioButtonFieldset.lastElementChild.classList.add("hidden");
+        removeSelectErrors(radioButtonFieldset);
       }
     });
   });
 
   textAreaElement.addEventListener("input", (event) => {
     if (textAreaElement.checkValidity()) {
-      textAreaElement.classList.remove("error-border");
-      textAreaElement.nextElementSibling.classList.add("hidden");
+      removeTextErrors(textAreaElement);
     }
   });
 
   consentCheckbox.addEventListener("change", (event) => {
     if (consentCheckbox.checkValidity()) {
-      consentFieldset.lastElementChild.classList.add("hidden");
+      removeSelectErrors(consentFieldset);
     }
   });
 
