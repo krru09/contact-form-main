@@ -23,12 +23,27 @@ const textAreaElement = document.querySelector("textarea");
 const consentCheckbox = document.querySelector('input[type="checkbox"]');
 const consentFieldset = document.querySelector(".consent-agreement");
 
-// form functions
+// load JSON form submissions data
+function setSubmissionsData() {
+  if (localStorage.getItem("submissonsObject")) {
+    console.log("submissionsObject found in localStorage")
+    const parsedData = JSON.parse(localStorage.getItem("submissonsObject"));
+    parsedData.forEach(data => {
+      const formObject = new FormObject(data);
+      formSubmissions.addSubmission(formObject);
+    });
+    console.log(formSubmissions.getSubmissions());
+  } else {
+    console.log("no submissions in localStorage");
+    console.log(formSubmissions.getSubmissions());
+  }
+}
 
+// form functions
 // show input errors
 function textErrors(textElement) {
-    textElement.nextElementSibling.classList.remove("hidden");
-    textElement.classList.add("error-border");
+  textElement.nextElementSibling.classList.remove("hidden");
+  textElement.classList.add("error-border");
 }
 
 function selectErrors(selectElement) {
@@ -53,7 +68,7 @@ function gatherData() {
     emailAddress: document.getElementById("email").value,
     queryType: document.querySelector('input[name="inquiry-type"]:checked').value,
     message: document.getElementById("message").value,
-    consent: document.getElementById("consent").value
+    consent: document.getElementById("consent").checked
   };
 
   /*
@@ -75,10 +90,14 @@ function gatherData() {
 
     console.log("getSubmissions() result from main: ", formSubmissions.getSubmissions());
   */
+
+  console.log(formSubmissions.getFromStorage());
 }
 
 // DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
+  setSubmissionsData();
+
   // ERROR VALIDATION CHECKS
   textInputElements.forEach(textInput => {
     textInput.addEventListener("invalid", (event) => {

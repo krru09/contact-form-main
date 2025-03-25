@@ -11,7 +11,6 @@ export default class Submissions {
   addSubmission(formObject) {
     if (formObject instanceof FormObject) {
       this.#submissions.push(formObject);
-      console.log("Submission added:", this.#submissions); // Debugging log
     }
   }
 
@@ -23,6 +22,7 @@ export default class Submissions {
     return [...this.#submissions];
   }
 
+  // save all history of form submissions into localStorage
   saveToStorage() {
     console.log("Inside saveToStorage()");
     console.log("Current Submissions: ", this.#submissions);
@@ -35,7 +35,7 @@ export default class Submissions {
     const submissionsCopy = this.#submissions.map(formObject => ({
       firstName: formObject.firstName,
       lastName: formObject.lastName,
-      emailAddres: formObject.emailAddress,
+      emailAddress: formObject.emailAddress,
       queryType: formObject.queryType,
       message: formObject.message,
       consent: formObject.consent
@@ -48,6 +48,11 @@ export default class Submissions {
           3. You are still controlling access through getter methods.
     */
 
-    localStorage.setItem("submissionsObject", JSON.stringify(submissionsCopy));
+    localStorage.setItem("submissonsObject", JSON.stringify(submissionsCopy));
+  }
+
+  getFromStorage() {
+    console.log("Inside getFromStorage()");
+    return JSON.parse(localStorage.getItem("submissonsObject"));
   }
 }
