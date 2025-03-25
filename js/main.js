@@ -1,6 +1,9 @@
 // array to hold form submission objects
 const formSubmissions = [];
 
+// all form elements
+const formElements = document.querySelectorAll("input, textarea");
+
 // important form elements
 // textbox elements
 const formElement = document.getElementById("contact-form");
@@ -17,13 +20,38 @@ const textAreaElement = document.querySelector("textarea");
 const consentCheckbox = document.querySelector('input[type="checkbox"]');
 const consentFieldset = document.querySelector(".consent-agreement");
 
+// form functions
+function textErrors(textElement) {
+    textElement.nextElementSibling.classList.remove("hidden");
+    textElement.classList.add("error-border");
+}
+
+function gatherData() {
+  const formObject = {};
+
+  formElements.forEach(formElement => {
+    if (formElement.type === "radio") {
+      if (formElement.checked) {
+        formObject[formElement.getAttribute("name")] = formElement.value;
+      }
+    } else {
+      formObject[formElement.getAttribute("name")] = formElement.value;
+    }
+  });
+
+  // console.log(formObject);
+
+  formSubmissions.push(formObject);
+  console.log(formSubmissions);
+}
+
+// DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
   // ERROR VALIDATION CHECKS
   textInputElements.forEach(textInput => {
     textInput.addEventListener("invalid", (event) => {
       event.preventDefault();
-      textInput.nextElementSibling.classList.remove("hidden");
-      textInput.classList.add("error-border");
+      textErrors(textInput);
     });
   })
 
@@ -76,27 +104,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // submit form event listener
   formElement.addEventListener("submit", (event) => {
     event.preventDefault();
     console.log("event triggered");
-    const formElements = document.querySelectorAll("input, textarea");
   
+    let firstInvalidField = null;
+
     formElements.forEach(element => {
       if (!element.checkValidity()) {
         element.reportValidity();
+        if (!firstInvalidField) {
+          firstInvalidField = element;
+        }
       }
     });
-  
-    let firstInvalidField = null;
-    for (let i = 0; i < formElements.length; i++) {
-      if (!formElements[i].checkValidity()) {
-        firstInvalidField = formElements[i];
-        break;
-      }
-    }
-  
+
     if (firstInvalidField) {
       firstInvalidField.focus();
+    }
+
+    if (formElement.reportValidity()) {
+      console.log("the form is valid!");
+      gatherData();
     }
   });
 });
