@@ -8,15 +8,20 @@ export default class FormObject {
   #consent;
 
   constructor({firstName, lastName, emailAddress, queryType, message, consent}) {
-      this.#firstName = firstName;
-      this.#lastName = lastName;
-      this.#emailAddress = emailAddress;
-      this.#queryType = queryType;
-      this.#message = message;
-      this.#consent = consent;
+    this.#firstName = firstName;
+    this.#lastName = lastName;
+    this.#emailAddress = emailAddress;
+    this.#queryType = queryType;
+    this.#message = message;
+    this.#consent = consent;
   }
 
   // Getters
+  // javascript prefers property style getters and setters (e.g., get firstName() instead of getFirstName()) - why?
+    // 1. provide encapsulation while keeping a natural syntax
+    // 2. writing explicity methods like getName(); or setName("Bob") look outdated
+    // 3. They allow smooth migration from public to private fields
+    // 4. Works better with frameworks like React and Vue
   get firstName() {
     return this.#firstName;
   }

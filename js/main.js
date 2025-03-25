@@ -1,7 +1,8 @@
 import FormObject from "./FormObject.js";
+import Submissions from "./Submissions.js";
 
 // array to hold form submission objects
-const formSubmissions = [];
+const formSubmissions = new Submissions();
 
 // all form elements
 const formElements = document.querySelectorAll("input, textarea");
@@ -28,6 +29,10 @@ function textErrors(textElement) {
     textElement.classList.add("error-border");
 }
 
+function selectErrors(selectElement) {
+  selectElement.lastElementChild.classList.remove("hidden");
+}
+
 function gatherData() {
   const formData = {
     firstName: document.getElementById("fname").value,
@@ -46,8 +51,16 @@ function gatherData() {
   */
 
   const formObject = new FormObject(formData);
+  formSubmissions.addSubmission(formObject);
+  formSubmissions.saveToStorage();
+  /*
+    console.log(formSubmissions)
+    ^^
+    Edge DevTools shows private fields under "Private fields" when expanded but they are still inaccessible in code. Trying to access #submissions directly throws an error.
 
-  formSubmissions.push(formObject);
+    To safely get the data, use getSubmissions() instead.
+  */
+  console.log("getSubmissions() result from main: ", formSubmissions.getSubmissions());
 }
 
 // DOMContentLoaded
@@ -63,19 +76,18 @@ document.addEventListener("DOMContentLoaded", () => {
   radioButtonElements.forEach(radioButton => {
     radioButton.addEventListener("invalid", (event) => {
       event.preventDefault();
-      radioButtonFieldset.lastElementChild.classList.remove("hidden");
+      selectErrors(radioButtonFieldset);
     });
   });
 
   textAreaElement.addEventListener("invalid", (event) => {
     event.preventDefault();
-    textAreaElement.classList.add("error-border");
-    textAreaElement.nextElementSibling.classList.remove("hidden");
+    textErrors(textAreaElement);
   });
 
   consentCheckbox.addEventListener("invalid", (event) => {
     event.preventDefault();
-    consentFieldset.lastElementChild.classList.remove("hidden");
+    selectErrors(consentFieldset);
   });
 
   // FORM VALIDATION TO CLEAR ERROR
@@ -105,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   consentCheckbox.addEventListener("change", (event) => {
     if (consentCheckbox.checkValidity()) {
-      consentFieldset.lastElementChild.classList.add("hidden");;
+      consentFieldset.lastElementChild.classList.add("hidden");
     }
   });
 
