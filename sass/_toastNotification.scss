@@ -1,0 +1,34 @@
+.notification-container { 
+  background-color: $grey-900;
+  color: $white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  display: none; // change to display: grid after user submits a valid form
+  gap: .5rem;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+
+  h2 {
+    font-size: 1.125rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem; 
+  }
+
+  h3 {
+    color: $green-200;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 150%;
+  }
+
+  animation: toastNotification 5s forwards;
+}
+
+@keyframes toastNotification {
+  0% {top: -100px;}
+  20% {top: 32px;}
+  60% {top: 32px;}
+  100% {top: -200px;}
+}
