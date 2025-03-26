@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("currentFormData")) {
     loadCurrentData();
   }
-  
+
   setSubmissionsData();
   saveCurrentData();
 
@@ -224,6 +224,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (formElement.reportValidity()) {
       console.log("the form is valid!");
       gatherData();
+      // remove current form data after the form is deemed valid
+      localStorage.removeItem("currentFormData");
     }
   });
 });
