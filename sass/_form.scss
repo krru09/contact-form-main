@@ -39,6 +39,11 @@ form {
   border-radius: 1rem;
   display: grid;
   gap: 2.5rem; 
+  width: 100%;
+
+  @include mq(1024px) {
+    width: 43.125rem;
+  }
 }
 
 #form-data {
@@ -57,6 +62,16 @@ legend {
   visibility: visible;
   margin-bottom: 1rem;
   width: 100%;
+}
+
+.radio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @include mq(768px) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 fieldset {
@@ -91,7 +106,31 @@ h1 {
 
 .contact-information {
   display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'fname'
+    'lname'
+    'email';
   gap: 1.5rem; 
+
+  @include mq(768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'fname lname'
+      'email email';
+  }
+}
+
+label[for="fname"] {
+  grid-area: fname;
+}
+
+label[for="lname"] {
+  grid-area: lname;
+}
+
+label[for="email"] {
+  grid-area: email;
 }
 
 .consent-agreement {
@@ -120,11 +159,6 @@ input[type="checkbox"] {
 .input-grid, .textarea-grid {
   display: grid;
   gap: 0.5rem;
-}
-
-.radio-grid {
-  display: grid;
-  gap: 1rem;
 }
 
 .asterisk {

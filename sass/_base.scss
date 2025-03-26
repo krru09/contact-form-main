@@ -24,6 +24,19 @@ $red-errors: #D73C3C;
   box-sizing: border-box;
 }
 
+/*mixins*/
+@mixin mq($size) {
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin min-width($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
 html, body {
   font-size: 1rem;
   font-family: "Karla", sans-serif;
@@ -36,7 +49,9 @@ body {
   background-color: $green-200;
   padding: 2rem 1rem;
   display: grid;
-  place-items: center;
+  @include mq(1024px) {
+    place-items: center;
+  }
 }
 
 button, input, textarea {
