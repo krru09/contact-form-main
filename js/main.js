@@ -23,6 +23,50 @@ const textAreaElement = document.querySelector("textarea");
 const consentCheckbox = document.querySelector('input[type="checkbox"]');
 const consentFieldset = document.querySelector(".consent-agreement");
 
+function loadCurrentData() {
+  const parsedFormData = JSON.parse(localStorage.getItem("currentFormData"));
+  console.log(parsedFormData);
+
+  Object.entries(parsedFormData).forEach(([key, value]) => {
+    formElements.forEach(formElement => {
+      if (formElement.name === key) {
+        switch (formElement.type) {
+          default:
+            formElement.value = value;
+            break;
+          case "radio":
+            const checkedRadio = document.querySelector(`input[type="radio"][value="${value}"]`);
+            checkedRadio.checked = true;
+            break;
+          case "checkbox":
+            formElement.checked = value;
+            break;
+        }
+      }
+    });
+  });
+}
+
+function saveCurrentData() {
+  let formData = {}
+  if (localStorage.getItem("currentFormData")) {
+    formData = JSON.parse(localStorage.getItem("currentFormData"));
+  } else {
+    formData = {};
+  }
+
+  formElements.forEach(formElement => {
+    formElement.addEventListener("input", () => {
+      if (formElement.matches("input[type='checkbox']")) {
+        formData[formElement.getAttribute("name")] = formElement.checked;
+      } else {
+        formData[formElement.getAttribute("name")] = formElement.value;
+      }
+      localStorage.setItem("currentFormData", JSON.stringify(formData));
+    });
+  });
+}
+
 // load JSON form submissions data
 function setSubmissionsData() {
   if (localStorage.getItem("submissonsObject")) {
@@ -96,7 +140,12 @@ function gatherData() {
 
 // DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("currentFormData")) {
+    loadCurrentData();
+  }
+  
   setSubmissionsData();
+  saveCurrentData();
 
   // ERROR VALIDATION CHECKS
   textInputElements.forEach(textInput => {
