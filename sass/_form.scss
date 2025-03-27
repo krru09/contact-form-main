@@ -98,6 +98,14 @@ input[type="text"], textarea, .radio-container {
 textarea {
   height: 15rem;
   resize: none;
+
+  @include mq(768px) {
+    height: 8.25rem;
+  }
+
+  @include mq(1024px) {
+    height: 6.563rem;
+  }
 }
 
 h1 {
