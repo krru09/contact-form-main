@@ -23,6 +23,15 @@ const textAreaElement = document.querySelector("textarea");
 const consentCheckbox = document.querySelector('input[type="checkbox"]');
 const consentFieldset = document.querySelector(".consent-agreement");
 
+function showToastNotification() {
+  console.log("hello");
+  const notificationElement = document.querySelector(".notification-container");
+  notificationElement.style.display = "grid";
+  notificationElement.addEventListener("animationend", () => {
+    notificationElement.style.display = "none";
+  });
+}
+
 function loadCurrentData() {
   const parsedFormData = JSON.parse(localStorage.getItem("currentFormData"));
   console.log(parsedFormData);
@@ -222,10 +231,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (formElement.reportValidity()) {
+      setTimeout(() => {
+        window.location.reload(); // Forces a clean reload
+      }, 5001);
       console.log("the form is valid!");
       gatherData();
+      showToastNotification();
       // remove current form data after the form is deemed valid
       localStorage.removeItem("currentFormData");
+      formElement.reset();
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth' // Optional for smooth scrolling
+      });
+      formElements[0].focus();
     }
   });
 });

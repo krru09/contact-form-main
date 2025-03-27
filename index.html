@@ -44,7 +44,7 @@
             <p class="hidden">This field is required</p>
           </label>
   
-          <label for="email" class="input-grid">
+          <label for="email" class="input-grid-email">
             <h2>Email Address <span class="asterisk">*</span></h2>
             <input type="text" id="email" name="email" required title="Input field for your email" pattern=".*@.*">
             <p class="hidden">Please enter a valid email address</p>
@@ -87,13 +87,13 @@
         <div class="agreement-terms">
           <input type="checkbox" id="consent" name="consent" required  title="Checkbox for consent verification">
           <label for="consent" id="agreement">
-            <h2>I consent to being contacted by the team *</h2>
+            <h2>I consent to being contacted by the team <span class="asterisk">*</h2>
           </label>
         </div>
         <p class="hidden">To submit this form, plese consent to being contacted</p>
       </fieldset>
 
-      <button type="submit" title="Form submission button">Submit</button>
+      <button type="submit" title="Form submission button" aria-label="Submit new inquiry to the support team">Submit</button>
     </form>
   </main>
   <script src="js/main.js" type="module"></script>

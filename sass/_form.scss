@@ -156,7 +156,16 @@ input[type="checkbox"] {
   accent-color: $green-600;
 }
 
-.input-grid, .textarea-grid {
+.input-grid {
+  display: grid;
+  gap: 0.5rem;
+
+  @include min-width(768px) {
+    grid-template-rows: auto auto 1.206rem;
+  }
+}
+
+.textarea-grid, .input-grid-email {
   display: grid;
   gap: 0.5rem;
 }
